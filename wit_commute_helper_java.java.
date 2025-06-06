@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class WitCommuteAssistant {
+    
+    public static void main(String[] args) {
+        witCommuteAssistant();
+    }
+    
+    // Defining the main function
+    public static void witCommuteAssistant() {
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) { // Keeps the program running until the user decides to quit
+            System.out.println("Welcome to the WIT Commute Assistant!"); // Displays the welcome message
+            sleep(500);
+            System.out.println("Where are you right now?");
+            sleep(500);
+            System.out.println("A. SM City Iloilo");
+            sleep(500);
+            System.out.println("B. Molo Plaza");
+            sleep(500);
+            System.out.println("C. Jaro Plaza");
+            sleep(500);
+            System.out.println("D. Mandurriao Plaza");
+            sleep(500);
+            System.out.println("E. Lapaz Plaza");
+            sleep(500);
+            System.out.println("F. Exit"); // Exits the program
+            
+            String choice;
+            while (true) { // Validates user input
+                System.out.print("Enter the letter corresponding to your location: ");
+                choice = scanner.nextLine().toUpperCase();
+                if (choice.equals("A") || choice.equals("B") || choice.equals("C") || 
+                    choice.equals("D") || choice.equals("E") || choice.equals("F")) {
+                    break; // Breaks the loop
+                } else {
+                    System.out.println("Invalid choice. Please enter a letter from A to F."); // Asks user for another input
+                }
+            }
+            
+            if (choice.equals("F")) {
+                System.out.println("Thank you for using the WIT Commute Helper!"); // Exits the program
+                break;
+            }
+            
+            System.out.println("\nCalculating your commute..."); // Display commute instructions based on user's location
+            sleep(1000);
+            
+            if (choice.equals("A")) {
+                System.out.println("From SM City Iloilo, ride the SM City Nabitasan Lapaz jeepney going towards Lapaz. ");
+                sleep(1000);
+                System.out.println("Estimated Fare: ₱12-₱14");
+            } else if (choice.equals("B")) {
+                System.out.println("From Molo Plaza, ride a Baluarte jeepney and get off at Atrium.");
+                sleep(1000);
+                System.out.println("Then, ride a CPU jeepney going to WIT.");
+                sleep(1000);
+                System.out.println("Estimated Total Fare: ₱25-₱30");
+            } else if (choice.equals("C")) {
+                System.out.println("From Jaro Plaza, ride a CPU or Tagbak Terminal jeepney and get off at WIT.");
+                sleep(1000);
+                System.out.println("Estimated Fare: ₱12-₱14");
+            } else if (choice.equals("D")) {
+                System.out.println("From Mandurriao Plaza, ride a Jaro Plaza Mandurriao jeepney and get off at Jaro Plaza.");
+                sleep(1000);
+                System.out.println("Then, ride a CPU jeepney and get off at Saint Clements.");
+                sleep(1000);
+                System.out.println("Estimated Total Fare: ₱24-₱30");
+            } else if (choice.equals("E")) {
+                System.out.println("From Lapaz Plaza, ride the Nabitasan Lapaz jeepney and get off at Nabitasan.");
+                sleep(1000);
+                System.out.println("Estimated Fare: ₱12-₱14");
+            }
+            
+            System.out.print("\nPress Enter to check another location..."); // Wait for user input before clearing the screen and restarting the loop
+            scanner.nextLine();
+            clearScreen();
+        }
+        
+        scanner.close();
+    }
+    
+    // Helper method to pause execution (equivalent to time.sleep() in Python)
+    public static void sleep(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    
+    // Helper method to clear the screen (equivalent to os.system('cls' or 'clear') in Python)
+    public static void clearScreen() {
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        } catch (Exception e) {
+            // If clearing fails, just print some newlines
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
+        }
+    }
+}
