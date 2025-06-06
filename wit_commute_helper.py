@@ -1,11 +1,11 @@
 import time
 import os 
 
-def wit_commute_assistant():
+def wit_commute_assistant(): #Defining the main function
 
 
-    while True:
-        print("Welcome to the WIT Commute Assistant!")
+    while True: #Keeps the program running until the user decides to quit
+        print("Welcome to the WIT Commute Assistant!") #Displays the welcome message 
         time.sleep(0.5)
         print("Where are you right now?")
         time.sleep(0.5)
@@ -19,20 +19,20 @@ def wit_commute_assistant():
         time.sleep(0.5)
         print("E. Lapaz Plaza")
         time.sleep(0.5)
-        print("F. Exit")  
+        print("F. Exit")  #Exits the program
 
-        while True:
+        while True: #Validates user input
             choice = input("Enter the letter corresponding to your location: ").upper()
             if choice in ['A', 'B', 'C', 'D', 'E', 'F']:
-                break
+                break  #Breaks the loop
             else:
-                print("Invalid choice. Please enter a letter from A to F.")
+                print("Invalid choice. Please enter a letter from A to F.")  #Asks user for another input
 
         if choice == 'F':
-            print("Thank you for using the WIT Commute Helper!")
+            print("Thank you for using the WIT Commute Helper!") #Exits the program
             break
 
-        print("\nCalculating your commute...")
+        print("\nCalculating your commute...") # Display commute instructions based on user's location
         time.sleep(1)  
 
         if choice == 'A':
@@ -60,7 +60,7 @@ def wit_commute_assistant():
             time.sleep(1)
             print("Estimated Fare: ₱12-₱14")
 
-        input("\nPress Enter to check another location...")
+        input("\nPress Enter to check another location...")  # Wait for user input before clearing the screen and restarting the loop
         os.system('cls' if os.name == 'nt' else 'clear')
 
 if __name__ == "__main__":
